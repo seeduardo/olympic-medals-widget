@@ -1,8 +1,15 @@
-.App {
-  text-align: center;
+.MedalCountType li {
+  display: inline;
+  padding-right: 10px;
+  /* text-align: right; */
 }
 
-.App-logo {
+/*
+.App {
+  text-align: center;
+} */
+
+/* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
@@ -30,4 +37,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
