@@ -3,7 +3,7 @@ import './App.css';
 
 function CountryFlagContainer() {
 
-  const flagTilesUrl = 'http://localhost:3000/flags/flagtiles'
+  // const flagTilesUrl = 'http://localhost:3000/flags/flagtiles'
 
   return (
     <div className="CountryFlagContainer">

@@ -16,13 +16,21 @@ function MedalCountTable() {
     }, []
   );
 
+  function sortMedalData(medalData) {
+    return medalData.sort(
+      function(a, b) {return b.gold - a.gold}
+    )
+
+  }
+
   async function getMedalData() {
     setError(false);
     try {
       const response = await fetch(medalDataUrl);
       const medalData = await response.json();
-      setMedalData(medalData);
-      console.log(medalData);
+      const sortedMedalData = sortMedalData(medalData)
+      setMedalData(sortedMedalData);
+      console.log(sortedMedalData);
     }
     catch(error) {
       setError(true);
