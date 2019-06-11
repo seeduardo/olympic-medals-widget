@@ -8,6 +8,7 @@ function MedalCountTable() {
 
   const medalDataUrl = 'https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json'
   const [medalData, setMedalData] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(
     () => {
@@ -16,10 +17,17 @@ function MedalCountTable() {
   );
 
   async function getMedalData() {
-    const response = await fetch(medalDataUrl);
-    const medalData = await response.json();
-    setMedalData(medalData);
-    console.log(medalData);
+    setError(false);
+    try {
+      const response = await fetch(medalDataUrl);
+      const medalData = await response.json();
+      setMedalData(medalData);
+      console.log(medalData);
+    }
+    catch(error) {
+      setError(true);
+      console.log('There has been an error fetching medal data from API - please try again')
+    }
   }
 
   return (
@@ -39,6 +47,9 @@ function MedalCountTable() {
             </td>
             <td>
               <CountryMedalCountContainer medalData={medalData}/>
+              {
+                error && <div style={{color: `red`}}>There has been an error fetching medal data from API - please try again</div>
+              }
             </td>
           </tr>
         </tbody>
