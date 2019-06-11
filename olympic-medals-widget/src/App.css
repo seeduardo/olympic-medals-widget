@@ -1,7 +1,11 @@
-.MedalCountType li {
+.MedalCountType li, .CountryMedalCount li {
   display: inline;
   padding-right: 10px;
   /* text-align: right; */
+}
+
+.CountryMedalCountContainer li {
+  list-style-type: none;
 }
 
 /*
