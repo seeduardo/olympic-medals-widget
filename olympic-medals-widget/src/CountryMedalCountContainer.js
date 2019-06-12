@@ -16,7 +16,7 @@ function CountryMedalCountContainer(props) {
         {props.medalData.map(
           countryMedalData =>
           <li key={countryMedalData.code}>
-            <CountryMedalCount country={countryMedalData.code} gold={countryMedalData.gold} silver={countryMedalData.silver} bronze={countryMedalData.bronze} sortMedalData={props.sortMedalData} medalData={props.medalData} setMedalData={props.setMedalData} />
+            <CountryMedalCount country={countryMedalData.code} gold={countryMedalData.gold} silver={countryMedalData.silver} bronze={countryMedalData.bronze} />
           </li>
         )}
       </ol>

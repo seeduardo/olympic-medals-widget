@@ -9,6 +9,8 @@ function MedalCountTable() {
   const medalDataUrl = 'https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json'
   const [medalData, setMedalData] = useState([]);
   const [error, setError] = useState(false);
+  const [activeTab, setActiveTab] = useState("gold")
+  const medalTabs = ["Gold", "Silver", "Bronze", "Total"]
 
   useEffect(
     () => {
@@ -16,12 +18,19 @@ function MedalCountTable() {
     }, []
   );
 
+  // useEffect(
+  //   (activeTab) => {
+  //     sortMedalData(medalData, activeTab);
+  //     console.log(medalData, activeTab);
+  //     setMedalData(medalData);
+  //   }, []
+  // );
+
   function handleClick(event) {
-    debugger
-    // event.preventDefault();
-    sortMedalData(medalData, event.target.innerText.toLowerCase());
-    console.log(medalData, event.target.innerText.toLowerCase());
-    setMedalData(medalData);
+    const clickedTab = event.target.innerText.toLowerCase();
+    setActiveTab(clickedTab);
+    const sortedMedalData = sortMedalData(medalData, clickedTab);
+    return setMedalData(sortedMedalData);
   }
 
   function sortMedalData(medalData, sortType) {
@@ -31,10 +40,12 @@ function MedalCountTable() {
     } else {
       secondarySortType = "gold"
     }
-    debugger
     return medalData.sort(
       function(a, b) {
-        if (a[sortType] !== b[sortType]) {
+        if (sortType === "total" && (a["gold"] + b["silver"] + b["bronze"]) !== (b["gold"] + b["silver"] + b["bronze"])) {
+          return (b["gold"] + b["silver"] + b["bronze"]) - (a["gold"] + a["silver"] + a["bronze"])
+        }
+        else if (a[sortType] !== b[sortType]) {
           return b[sortType] - a[sortType]
         }
         else {
@@ -42,8 +53,6 @@ function MedalCountTable() {
         }
       }
     )
-    debugger
-    // setMedalData(medalData)
   }
 
   async function getMedalData() {
@@ -54,7 +63,6 @@ function MedalCountTable() {
       const medalData = await response.json();
       const sortedMedalData = sortMedalData(medalData, defaultSortType);
       setMedalData(sortedMedalData);
-      console.log(sortedMedalData);
     }
     catch(error) {
       setError(true);
@@ -68,7 +76,10 @@ function MedalCountTable() {
       <table>
         <tbody>
           <tr>
-            <th>Flag</th><th>Country</th><th>Gold</th><th onClick={handleClick} >Silver</th><th>Bronze</th><th>Total</th>
+            <th></th>
+            {medalTabs.map(
+              medalTab => <th onClick={handleClick}>{medalTab}</th>
+            )}
           </tr>
           <tr>
             <td>
