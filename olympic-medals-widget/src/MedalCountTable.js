@@ -7,10 +7,10 @@ import CountryMedalCountContainer from './CountryMedalCountContainer';
 function MedalCountTable() {
 
   const medalDataUrl = 'https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json'
+  const [activeTab, setActiveTab] = useState("gold");
   const [medalData, setMedalData] = useState([]);
   const [error, setError] = useState(false);
-  const [activeTab, setActiveTab] = useState("gold")
-  const medalTabs = ["Gold", "Silver", "Bronze", "Total"]
+  const medalTabs = ["Gold", "Silver", "Bronze", "Total"];
 
   useEffect(
     () => {
@@ -78,7 +78,12 @@ function MedalCountTable() {
           <tr>
             <th></th>
             {medalTabs.map(
-              medalTab => <th onClick={handleClick}>{medalTab}</th>
+              medalTab => <th onClick={handleClick}
+               className={
+                medalTab.toLowerCase() === activeTab
+                  ? "active"
+                  : "not-active"
+              } >{medalTab}</th>
             )}
           </tr>
           <tr>

@@ -4,6 +4,10 @@
   /* text-align: right; */
 }
 
+.active {
+  border-top: 1px solid black;
+}
+
 /* .CountryMedalCountContainer li {
   list-style-type: none;
 } */
