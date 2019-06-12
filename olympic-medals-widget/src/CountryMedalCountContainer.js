@@ -13,7 +13,7 @@ function CountryMedalCountContainer(props) {
   return (
     <div className="CountryMedalCountContainer">
       <ol>
-        {props.medalData.map(
+        {props.medalData.slice(0, 10).map(
           countryMedalData =>
           <li key={countryMedalData.code}>
             <CountryMedalCount country={countryMedalData.code} gold={countryMedalData.gold} silver={countryMedalData.silver} bronze={countryMedalData.bronze} />
