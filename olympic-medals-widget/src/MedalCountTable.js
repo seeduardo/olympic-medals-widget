@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import MedalCountType from './MedalCountType';
-import CountryFlagContainer from './CountryFlagContainer';
+// import MedalCountType from './MedalCountType';
+// import CountryFlagContainer from './CountryFlagContainer';
 import CountryMedalCountContainer from './CountryMedalCountContainer';
 
 function MedalCountTable() {
@@ -16,6 +16,14 @@ function MedalCountTable() {
     }, []
   );
 
+  function handleClick(event) {
+    debugger
+    // event.preventDefault();
+    sortMedalData(medalData, event.target.innerText.toLowerCase());
+    console.log(medalData, event.target.innerText.toLowerCase());
+    setMedalData(medalData);
+  }
+
   function sortMedalData(medalData, sortType) {
     let secondarySortType
     if (sortType === "gold"){
@@ -23,6 +31,7 @@ function MedalCountTable() {
     } else {
       secondarySortType = "gold"
     }
+    debugger
     return medalData.sort(
       function(a, b) {
         if (a[sortType] !== b[sortType]) {
@@ -33,6 +42,8 @@ function MedalCountTable() {
         }
       }
     )
+    debugger
+    // setMedalData(medalData)
   }
 
   async function getMedalData() {
@@ -42,9 +53,7 @@ function MedalCountTable() {
       const response = await fetch(medalDataUrl);
       const medalData = await response.json();
       const sortedMedalData = sortMedalData(medalData, defaultSortType);
-      debugger
       setMedalData(sortedMedalData);
-      debugger
       console.log(sortedMedalData);
     }
     catch(error) {
@@ -59,17 +68,11 @@ function MedalCountTable() {
       <table>
         <tbody>
           <tr>
-            <td></td>
-            <td>
-              <MedalCountType/>
-            </td>
+            <th>Flag</th><th>Country</th><th>Gold</th><th onClick={handleClick} >Silver</th><th>Bronze</th><th>Total</th>
           </tr>
           <tr>
             <td>
-              <CountryFlagContainer/>
-            </td>
-            <td>
-              <CountryMedalCountContainer medalData={medalData}/>
+              <CountryMedalCountContainer sortMedalData={sortMedalData} medalData={medalData} setMedalData={setMedalData}/>
               {
                 error && <div style={{color: `red`}}>There has been an error fetching medal data from API - please try again</div>
               }
