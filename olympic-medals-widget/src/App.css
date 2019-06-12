@@ -4,8 +4,37 @@
   /* text-align: right; */
 }
 
+/* .CountryMedalCountContainer {
+  width: 100%;
+} */
+
 .active {
-  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+td {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+.gold {
+  color: transparent;
+  background-color: gold;
+}
+
+.silver {
+  color: transparent;
+  background-color: silver;
+}
+
+.bronze {
+  color: transparent;
+  background-color: rgb(133	82 32);
+}
+
+.total {
+  color: black;
 }
 
 /* .CountryMedalCountContainer li {

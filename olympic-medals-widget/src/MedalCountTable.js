@@ -10,21 +10,13 @@ function MedalCountTable() {
   const [activeTab, setActiveTab] = useState("gold");
   const [medalData, setMedalData] = useState([]);
   const [error, setError] = useState(false);
-  const medalTabs = ["Gold", "Silver", "Bronze", "Total"];
+  const medalTabs = ["", "Gold", "Silver", "Bronze", "Total"];
 
   useEffect(
     () => {
       getMedalData();
     }, []
   );
-
-  // useEffect(
-  //   (activeTab) => {
-  //     sortMedalData(medalData, activeTab);
-  //     console.log(medalData, activeTab);
-  //     setMedalData(medalData);
-  //   }, []
-  // );
 
   function handleClick(event) {
     const clickedTab = event.target.innerText.toLowerCase();
@@ -76,14 +68,24 @@ function MedalCountTable() {
       <table>
         <tbody>
           <tr>
-            <th></th>
             {medalTabs.map(
-              medalTab => <th onClick={handleClick}
-               className={
-                medalTab.toLowerCase() === activeTab
-                  ? "active"
-                  : "not-active"
-              } >{medalTab}</th>
+              medalTab =>
+                <th
+                  className={
+                    medalTab.toLowerCase() === activeTab
+                      ? "active"
+                      : "not-active"
+                  } >
+                </th>
+            )}
+          </tr>
+          <tr>
+            {medalTabs.map(
+              medalTab =>
+                <td
+                  onClick={handleClick}
+                  className={medalTab.toLowerCase()}>{medalTab}
+                </td>
             )}
           </tr>
           <tr>
@@ -101,20 +103,3 @@ function MedalCountTable() {
 }
 
 export default MedalCountTable;
-
-// (b.gold > a.gold) ? 1 : (b.gold === a.gold)
-//     ? ((b.silver > a.silver)
-//       ? 1
-//       : -1)
-//     : -1)
-
-// switch (sortType) {
-//   case "gold":
-//     secondarySortType = "silver";
-//     break;
-//   case "silver":
-//     secondarySortType = "gold";
-//     break;
-//   case "bronze":
-//     secondarySortType = "gold"
-// }

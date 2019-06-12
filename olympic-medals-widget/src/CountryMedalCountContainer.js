@@ -4,12 +4,6 @@ import CountryMedalCount from './CountryMedalCount';
 
 function CountryMedalCountContainer(props) {
 
-  // function handleClick(e) {
-  //   console.log(e.target.innerText.toLowerCase())
-  //   const sortedMedalData = props.sortMedalData(props.medalData, e.target.innerText.toLowerCase());
-  //   props.setMedalData(sortedMedalData);
-  // }
-
   return (
     <div className="CountryMedalCountContainer">
       <ol>
