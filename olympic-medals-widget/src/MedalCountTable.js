@@ -10,7 +10,7 @@ function MedalCountTable() {
   const [activeTab, setActiveTab] = useState("gold");
   const [medalData, setMedalData] = useState([]);
   const [error, setError] = useState(false);
-  const medalTabs = ["", "Gold", "Silver", "Bronze", "Total"];
+  const medalTabs = ["Country-Order", "Gold", "Silver", "Bronze", "Total"];
 
   useEffect(
     () => {
@@ -19,7 +19,7 @@ function MedalCountTable() {
   );
 
   function handleClick(event) {
-    const clickedTab = event.target.innerText.toLowerCase();
+    const clickedTab = event.target.id;
     setActiveTab(clickedTab);
     const sortedMedalData = sortMedalData(medalData, clickedTab);
     return setMedalData(sortedMedalData);
@@ -70,7 +70,7 @@ function MedalCountTable() {
           <tr>
             {medalTabs.map(
               medalTab =>
-                <th
+                <th key={medalTab + " header"}
                   className={
                     medalTab.toLowerCase() === activeTab
                       ? "active"
@@ -82,9 +82,17 @@ function MedalCountTable() {
           <tr>
             {medalTabs.map(
               medalTab =>
-                <td
-                  onClick={handleClick}
-                  className={medalTab.toLowerCase()}>{medalTab}
+                <td key={medalTab + " tab"}
+                  onClick={
+                    medalTab === ""
+                      ? null
+                      : handleClick}
+                  className={"click-tab"}
+                  id={medalTab.toLowerCase()}>
+                  {medalTab === "Total"
+                    ? medalTab
+                    : null
+                  }
                 </td>
             )}
           </tr>

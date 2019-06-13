@@ -12,29 +12,33 @@
   border-bottom: 1px solid black;
 }
 
-td {
+.click-tab {
   height: 25px;
   width: 25px;
   border-radius: 50%;
 }
 
-.gold {
+#gold {
   color: transparent;
   background-color: gold;
 }
 
-.silver {
+#silver {
   color: transparent;
   background-color: silver;
 }
 
-.bronze {
+#bronze {
   color: transparent;
   background-color: rgb(133	82 32);
 }
 
-.total {
+#total {
   color: black;
+}
+
+ul {
+  padding: 0;
 }
 
 /* .CountryMedalCountContainer li {
