@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   overflow: hidden;
+  /* width: 375px; */
 }
 
 .title {
@@ -12,6 +13,8 @@
   display: grid;
   grid-template-areas:
     '. . . . .';
+  grid-template-columns: 66px 36px 36px 36px 41px;
+  text-align: center;
 }
 
 .click-tabs {
@@ -19,6 +22,8 @@
   display: grid;
   grid-template-areas:
     '. . . . .';
+  grid-template-columns: 66px 36px 36px 36px 41px;
+  text-align: center;
 }
 
 .medal-count {
@@ -31,35 +36,38 @@
 
 .list-place {
   grid-area: list-place;
+  text-align: right;
 }
 
 .flag {
   grid-area: flag;
+  text-align: center;
 }
 
 .country-name {
   grid-area: country-name;
+  text-align: left;
 }
 
 .gold-medals {
   grid-area: gold-medals;
+  text-align: center;
 }
 
 .silver-medals {
   grid-area: silver-medals;
+  text-align: center;
 }
 
 .bronze-medals {
   grid-area: bronze-medals;
+  text-align: center;
 }
 
 .total-medals {
   grid-area: total-medals;
+  text-align: center;
 }
-
-
-
-
 
 .MedalCountTable {
   /* margin: auto; */
@@ -73,7 +81,7 @@
     '. . . activity activity activity activity activity'
     '. . . click-tabs click-tabs click-tabs click-tabs click-tabs'
     'medal-count medal-count medal-count medal-count medal-count medal-count medal-count medal-count';
-
+  grid-template-columns: 18px 39px 45px 66px 36px 36px 36px 41px;
 }
 
 /* .CountryMedalCountContainer {
@@ -86,6 +94,7 @@
   display: grid;
   grid-template-areas:
     'list-place flag country-name . gold-medals silver-medals bronze-medals total-medals';
+  grid-template-columns: 18px 39px 45px 66px 36px 36px 36px 41px;
 }
 
 /* .CountryMedalCount li {
@@ -104,9 +113,10 @@
 }
 
 .click-tab {
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
+  align-content: center;
 }
 
 #gold {

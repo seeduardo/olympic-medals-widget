@@ -9,11 +9,11 @@ function CountryMedalCountContainer(props) {
 
         {props.medalData.slice(0, 10).map(
           countryMedalData =>
-          <span key={countryMedalData.code} >
+          <div key={countryMedalData.code} >
             <CountryMedalCount listPlace={props.medalData.indexOf(countryMedalData) + 1} country={countryMedalData.code} gold={countryMedalData.gold} silver={countryMedalData.silver} bronze={countryMedalData.bronze} />
-          </span>
+          </div>
         )}
-      
+
     </div>
   );
 }
