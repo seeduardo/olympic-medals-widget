@@ -7,14 +7,15 @@ function CountryMedalCount(props) {
 
   return (
     <div className="CountryMedalCount">
-      <ul>
-        <li><img src={flagTilesUrl + "flag_tile_" + props.country + ".png"} alt={props.country} /></li>
-        <li>{props.country}</li>
-        <li>{props.gold}</li>
-        <li>{props.silver}</li>
-        <li>{props.bronze}</li>
-        <li>{props.gold + props.silver + props.bronze}</li>
-      </ul>
+
+        <div className="list-place">{props.listPlace}</div>
+        <div className="flag"><img src={flagTilesUrl + "flag_tile_" + props.country + ".png"} alt={props.country} /></div>
+        <div className="country-name">{props.country}</div>
+        <div className="gold-medals">{props.gold}</div>
+        <div className="silver-medals">{props.silver}</div>
+        <div className="bronze-medals">{props.bronze}</div>
+        <div className="total-medals">{props.gold + props.silver + props.bronze}</div>
+
     </div>
   );
 }

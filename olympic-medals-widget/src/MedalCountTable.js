@@ -64,48 +64,43 @@ function MedalCountTable() {
 
   return (
     <div className="MedalCountTable">
-      <header>MEDAL COUNT</header>
-      <table>
-        <tbody>
-          <tr>
-            {medalTabs.map(
-              medalTab =>
-                <th key={medalTab + " header"}
-                  className={
-                    medalTab.toLowerCase() === activeTab
-                      ? "active"
-                      : "not-active"
-                  } >
-                </th>
-            )}
-          </tr>
-          <tr>
-            {medalTabs.map(
-              medalTab =>
-                <td key={medalTab + " tab"}
-                  onClick={
-                    medalTab === ""
-                      ? null
-                      : handleClick}
-                  className={"click-tab"}
-                  id={medalTab.toLowerCase()}>
-                  {medalTab === "Total"
-                    ? medalTab
-                    : null
-                  }
-                </td>
-            )}
-          </tr>
-          <tr>
-            <td>
-              <CountryMedalCountContainer sortMedalData={sortMedalData} medalData={medalData} setMedalData={setMedalData}/>
-              {
-                error && <div style={{color: `red`}}>There has been an error fetching medal data from API - please try again</div>
+      <div className="title">MEDAL COUNT</div>
+
+      <div className="activity">
+        {medalTabs.map(
+          medalTab =>
+            <div key={medalTab + " header"}
+              className={
+                medalTab.toLowerCase() === activeTab
+                  ? "active"
+                  : "not-active"
+              } >
+            </div>
+        )}
+      </div>
+      <div className="click-tabs">
+        {medalTabs.map(
+          medalTab =>
+            <div key={medalTab + " tab"}
+              onClick={
+                medalTab === ""
+                  ? null
+                  : handleClick}
+              className={"click-tab"}
+              id={medalTab.toLowerCase()}>
+              {medalTab === "Total"
+                ? medalTab
+                : null
               }
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+        )}
+      </div>
+      <div className="medal-count">
+        <CountryMedalCountContainer  sortMedalData={sortMedalData} medalData={medalData} setMedalData={setMedalData}/>
+        {
+          error && <div style={{color: `red`}}>There has been an error fetching medal data from API - please try again</div>
+        }
+      </div>
     </div>
   );
 }
