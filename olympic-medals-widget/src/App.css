@@ -1,11 +1,11 @@
-.App {
+/* .App {
   text-align: center;
   overflow: hidden;
-  /* width: 375px; */
-}
+} */
 
 .title {
   grid-area: title;
+  text-align: left;
 }
 
 .activity {
@@ -13,7 +13,7 @@
   display: grid;
   grid-template-areas:
     '. . . . .';
-  grid-template-columns: 66px 36px 36px 36px 41px;
+  grid-template-columns: 26.028fr 17.808fr 17.808fr 17.808fr 20.548fr;
   text-align: center;
 }
 
@@ -22,17 +22,15 @@
   display: grid;
   grid-template-areas:
     '. . . . .';
-  grid-template-columns: 66px 36px 36px 36px 41px;
+  grid-template-columns: 26.028fr 17.808fr 17.808fr 17.808fr 20.548fr;
   text-align: center;
 }
 
 .medal-count {
   grid-area: medal-count;
-}
+  border-top: 2px solid black;
 
-/* .item5 {
-  grid-area: country-row;
-} */
+}
 
 .list-place {
   grid-area: list-place;
@@ -70,42 +68,35 @@
 }
 
 .MedalCountTable {
-  /* margin: auto; */
-  /* position: relative; */
-  /* height: 100vh; */
-  /* margin: 25%;
-  width: 50%; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
   grid-template-areas:
     'title title title title title title title title'
     '. . . activity activity activity activity activity'
     '. . . click-tabs click-tabs click-tabs click-tabs click-tabs'
     'medal-count medal-count medal-count medal-count medal-count medal-count medal-count medal-count';
-  grid-template-columns: 18px 39px 45px 66px 36px 36px 36px 41px;
+  grid-template-columns: 5fr 10fr 12fr 19fr 13fr 13fr 13fr 15fr;
+  grid-gap: 10px;
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
 }
-
-/* .CountryMedalCountContainer {
-  display: grid;
-  grid-template-areas:
-  'country-row' 'country-row' 'country-row' 'country-row' 'country-row' 'country-row' 'country-row' 'country-row';
-} */
 
 .CountryMedalCount {
   display: grid;
   grid-template-areas:
     'list-place flag country-name . gold-medals silver-medals bronze-medals total-medals';
-  grid-template-columns: 18px 39px 45px 66px 36px 36px 36px 41px;
+  grid-template-columns: 5fr 10fr 12fr 19fr 13fr 13fr 13fr 15fr;
+  grid-gap: 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  height: 25px;
+  padding: 10px;
 }
-
-/* .CountryMedalCount li {
-  display: inline;
-  padding-right: 10px;
-  text-align: right;
-} */
-
-/* .CountryMedalCountContainer {
-  width: 100%;
-} */
 
 .active {
   border-bottom: 1px solid black;
@@ -116,7 +107,7 @@
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  align-content: center;
+  margin: auto;
 }
 
 #gold {
@@ -136,47 +127,5 @@
 
 #total {
   color: black;
+  margin-right: 50%;
 }
-
-ul {
-  padding: 0;
-}
-
-/* .CountryMedalCountContainer li {
-  list-style-type: none;
-} */
-
-/*
-.App {
-  text-align: center;
-} */
-
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
