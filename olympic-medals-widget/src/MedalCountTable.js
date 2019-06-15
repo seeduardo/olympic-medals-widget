@@ -94,7 +94,7 @@ function MedalCountTable() {
         )}
       </div>
       <div className="medal-count">
-        <CountryMedalCountContainer  sortMedalData={sortMedalData} medalData={medalData} setMedalData={setMedalData}/>
+        <CountryMedalCountContainer medalData={medalData}/>
         <ErrorMessage error={error}/>
       </div>
     </div>

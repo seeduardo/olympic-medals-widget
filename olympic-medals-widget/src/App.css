@@ -1,7 +1,33 @@
-/* .App {
-  text-align: center;
-  overflow: hidden;
-} */
+.MedalCountTable {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-areas:
+    'title title title title title title title title'
+    '. . . activity activity activity activity activity'
+    '. . . click-tabs click-tabs click-tabs click-tabs click-tabs'
+    'medal-count medal-count medal-count medal-count medal-count medal-count medal-count medal-count';
+  grid-template-columns: 5fr 10fr 12fr 19fr 13fr 13fr 13fr 15fr;
+  grid-gap: 10px;
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.CountryMedalCount {
+  display: grid;
+  grid-template-areas:
+    'list-place flag country-name . gold-medals silver-medals bronze-medals total-medals';
+  grid-template-columns: 5fr 10fr 12fr 19fr 13fr 13fr 13fr 15fr;
+  grid-gap: 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  height: 25px;
+  padding: 10px;
+}
 
 .ErrorMessage {
   color: red;
@@ -70,37 +96,6 @@
 .total-medals {
   grid-area: total-medals;
   text-align: center;
-}
-
-.MedalCountTable {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: grid;
-  grid-template-areas:
-    'title title title title title title title title'
-    '. . . activity activity activity activity activity'
-    '. . . click-tabs click-tabs click-tabs click-tabs click-tabs'
-    'medal-count medal-count medal-count medal-count medal-count medal-count medal-count medal-count';
-  grid-template-columns: 5fr 10fr 12fr 19fr 13fr 13fr 13fr 15fr;
-  grid-gap: 10px;
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 10px;
-}
-
-.CountryMedalCount {
-  display: grid;
-  grid-template-areas:
-    'list-place flag country-name . gold-medals silver-medals bronze-medals total-medals';
-  grid-template-columns: 5fr 10fr 12fr 19fr 13fr 13fr 13fr 15fr;
-  grid-gap: 10px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  height: 25px;
-  padding: 10px;
 }
 
 .active {
