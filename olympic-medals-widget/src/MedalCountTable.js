@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CountryMedalCountContainer from './CountryMedalCountContainer';
+import ErrorMessage from './ErrorMessage'
 
 function MedalCountTable() {
 
   const medalDataUrl = 'https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json'
   const [medalData, setMedalData] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("gold");
   const medalTabs = ["country-order", "gold", "silver", "bronze", "total"];
 
@@ -47,23 +48,22 @@ function MedalCountTable() {
 
   async function getMedalData() {
     let defaultSortType = "gold"
-    setError(false);
+    let response;
+    setError(null);
     try {
-      const response = await fetch(medalDataUrl);
-      const medalData = await response.json();
-      const sortedMedalData = sortMedalData(medalData, defaultSortType);
-      setMedalData(sortedMedalData);
+      response = await fetch(medalDataUrl);
+    } catch(error) {
+      console.log(`${error} --- please check your internet connection.`);
+      return setError(error);
     }
-    catch(error) {
-      setError(true);
-      console.log('There has been an error fetching medal data from API - please try again')
-    }
+    const medalData = await response.json();
+    const sortedMedalData = sortMedalData(medalData, defaultSortType);
+    setMedalData(sortedMedalData);
   }
 
   return (
     <div className="MedalCountTable">
       <div className="title">MEDAL COUNT</div>
-
       <div className="activity">
         {medalTabs.map(
           medalTab =>
@@ -95,9 +95,7 @@ function MedalCountTable() {
       </div>
       <div className="medal-count">
         <CountryMedalCountContainer  sortMedalData={sortMedalData} medalData={medalData} setMedalData={setMedalData}/>
-        {
-          error && <div style={{color: `red`, textAlign: `center`}}>There has been an error fetching medal data from API --- please try again.</div>
-        }
+        <ErrorMessage error={error}/>
       </div>
     </div>
   );
