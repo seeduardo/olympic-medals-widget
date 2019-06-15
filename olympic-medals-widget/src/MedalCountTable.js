@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-// import MedalCountType from './MedalCountType';
-// import CountryFlagContainer from './CountryFlagContainer';
 import CountryMedalCountContainer from './CountryMedalCountContainer';
 
 function MedalCountTable() {
 
   const medalDataUrl = 'https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json'
-  const [activeTab, setActiveTab] = useState("gold");
   const [medalData, setMedalData] = useState([]);
   const [error, setError] = useState(false);
-  const medalTabs = ["Country-Order", "Gold", "Silver", "Bronze", "TOTAL"];
+  const [activeTab, setActiveTab] = useState("gold");
+  const medalTabs = ["country-order", "gold", "silver", "bronze", "total"];
 
   useEffect(
     () => {
@@ -34,7 +32,7 @@ function MedalCountTable() {
     }
     return medalData.sort(
       function(a, b) {
-        if (sortType === "total" && (a["gold"] + b["silver"] + b["bronze"]) !== (b["gold"] + b["silver"] + b["bronze"])) {
+        if (sortType === "total" && (a["gold"] + a["silver"] + a["bronze"]) !== (b["gold"] + b["silver"] + b["bronze"]) ) {
           return (b["gold"] + b["silver"] + b["bronze"]) - (a["gold"] + a["silver"] + a["bronze"])
         }
         else if (a[sortType] !== b[sortType]) {
@@ -71,7 +69,7 @@ function MedalCountTable() {
           medalTab =>
             <div key={medalTab + " header"}
               className={
-                medalTab.toLowerCase() === activeTab
+                medalTab === activeTab
                   ? "active"
                   : "not-active"
               } >
@@ -83,13 +81,13 @@ function MedalCountTable() {
           medalTab =>
             <div key={medalTab + " tab"}
               onClick={
-                medalTab === ""
+                medalTab === "country-order"
                   ? null
                   : handleClick}
               className={"click-tab"}
-              id={medalTab.toLowerCase()}>
-              {medalTab === "TOTAL"
-                ? medalTab
+              id={medalTab}>
+              {medalTab === "total"
+                ? medalTab.toUpperCase()
                 : null
               }
             </div>
@@ -98,7 +96,7 @@ function MedalCountTable() {
       <div className="medal-count">
         <CountryMedalCountContainer  sortMedalData={sortMedalData} medalData={medalData} setMedalData={setMedalData}/>
         {
-          error && <div style={{color: `red`}}>There has been an error fetching medal data from API - please try again</div>
+          error && <div style={{color: `red`, textAlign: `center`}}>There has been an error fetching medal data from API --- please try again.</div>
         }
       </div>
     </div>
