@@ -9,7 +9,7 @@ function MedalCountTable() {
   const [medalData, setMedalData] = useState([]);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("gold");
-  const medalTabs = ["country-order", "gold", "silver", "bronze", "total"];
+  const medalTabs = ["gold", "silver", "bronze", "total"];
 
   useEffect(
     () => {
@@ -80,10 +80,7 @@ function MedalCountTable() {
         {medalTabs.map(
           medalTab =>
             <div key={medalTab + " tab"}
-              onClick={
-                medalTab === "country-order"
-                  ? null
-                  : handleClick}
+              onClick={handleClick}
               className={"click-tab"}
               id={medalTab}>
               {medalTab === "total"

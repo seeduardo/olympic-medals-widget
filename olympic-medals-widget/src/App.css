@@ -6,16 +6,17 @@
   display: grid;
   grid-template-areas:
     'title title title title title title title title'
-    '. . . activity activity activity activity activity'
-    '. . . click-tabs click-tabs click-tabs click-tabs click-tabs'
+    '. . . . activity activity activity activity'
+    '. . . . click-tabs click-tabs click-tabs click-tabs'
     'medal-count medal-count medal-count medal-count medal-count medal-count medal-count medal-count';
   grid-template-columns: 5fr 10fr 12fr 19fr 13fr 13fr 13fr 15fr;
   grid-gap: 10px;
   border-top: 2px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   padding: 10px;
+  min-width: 90vmin;
 }
 
 .CountryMedalCount {
@@ -25,8 +26,10 @@
   grid-template-columns: 5fr 10fr 12fr 19fr 13fr 13fr 13fr 15fr;
   grid-gap: 10px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  height: 25px;
-  padding: 10px;
+  padding: 10px 0;
+  margin-top: 2px;
+  font-weight: 700;
+  color: #00000073;
 }
 
 .ErrorMessage {
@@ -37,29 +40,34 @@
 .title {
   grid-area: title;
   text-align: left;
+  font-weight: 500;
+  font-size: x-large;
+  color: #00000070;
 }
 
 .activity {
   grid-area: activity;
   display: grid;
   grid-template-areas:
-    '. . . . .';
-  grid-template-columns: 26.028fr 17.808fr 17.808fr 17.808fr 20.548fr;
+    '. . . .';
+  grid-template-columns: 24.074fr 24.074fr 24.074fr 27.778fr;
   text-align: center;
+  grid-gap: 10px;
 }
 
 .click-tabs {
   grid-area: click-tabs;
   display: grid;
   grid-template-areas:
-    '. . . . .';
-  grid-template-columns: 26.028fr 17.808fr 17.808fr 17.808fr 20.548fr;
+    '. . . .';
+  grid-template-columns: 24.074fr 24.074fr 24.074fr 27.778fr;
   text-align: center;
+  grid-gap: 10px;
 }
 
 .medal-count {
   grid-area: medal-count;
-  border-top: 2px solid black;
+  border-top: 2px solid #00000087;
 
 }
 
@@ -96,6 +104,7 @@
 .total-medals {
   grid-area: total-medals;
   text-align: center;
+  color: #000000b0;
 }
 
 .active {
@@ -126,6 +135,7 @@
 }
 
 #total {
-  color: black;
-  margin-right: 50%;
+  color: #000000b0;
+  margin-right: 57%;
+  font-weight: 600;
 }
