@@ -8,7 +8,7 @@ function ErrorMessage({ error }) {
   return (
     <div className="ErrorMessage">
       <h3>Server Error</h3>
-      <p>There has been an error while fetching medal data from the server --- please check your Internet connection and/or try again.</p>
+      <p>There has been an error while fetching medal data from the server --- please check your Internet connection and try again later.</p>
     </div>
   );
 }
